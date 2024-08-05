@@ -32,17 +32,27 @@ The project is designed to run on your local computer, provided you have met the
 + Start Azurite storage emulator. See [this page](https://learn.microsoft.com/azure/storage/common/storage-use-azurite) for how to configure and start the Azurite emulator for Local Storage.
 
 ### Using Azure Functions Core Tools (CLI)
+1) Open a new terminal and go inside the **http** directory:
 
-1) Open a new terminal and do the following:
+2) Add a "local.settings.json" in the directory:
 
-```bash
-cd http
-func start
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+  }
+}
 ```
 
-2) Test a Web hook or GET using the browser to open http://localhost:7071/api/http
+3) Start the function app:
 
-3) Test a POST using your favorite REST client, e.g. [RestClient in VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), PostMan, curl.  `test.http` has been provided to run this quickly.
+```bash
+func start 
+```
+
+4) Test a POST using your favorite REST client, e.g. [RestClient in VS Code](https://marketplace.visualstudio.com/items?itemName=humao.rest-client), PostMan, curl.  `test.http` has been provided to run this quickly.
 
 Terminal:
 
